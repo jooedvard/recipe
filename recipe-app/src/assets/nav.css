@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap");
+nav {
+  
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  width: auto;
+  margin: auto;
+  font-family: "Inter", sans-serif;
+  border-radius: 25px;
+  padding: 1.5rem;
+  justify-content: center;
+  gap: 10rem;
+}
+nav a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: rgba(101, 113, 152, 255);
+}
+nav span {
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.icon-part1 {
+  color: blue;
+}
+.icon-part2 {
+  color: rgb(228, 148, 0);
+}
+
+@media (max-width:1000px) {
+    nav{
+       gap: 5rem;
+    }
+}
+
+@media (max-width:720px) {
+    nav{
+       gap: 2.5rem;
+    }
+}
+@media (max-width:600px) {
+    nav{
+       flex-direction: column;
+    }
+}
