@@ -4,10 +4,10 @@ import Meal from "../components/Meal.vue";
 import Choosenmeal from "../components/Choosenmeal.vue";
 import { RouterLink, RouterView } from "vue-router";
 
-async function fetchData(api){
-    let response = await fetch(api);
-    let data = await response.json();
-    return data;
+async function fetchData(api) {
+  let response = await fetch(api);
+  let data = await response.json();
+  return data;
 }
 
 export default {
@@ -16,26 +16,52 @@ export default {
     return {
       categories: [],
       selectedMeals: [],
-      choosenMeal: {},
+      choosenMeal: false,
     };
   },
   async created() {
-      let data = await fetchData("https://www.themealdb.com/api/json/v1/1/categories.php");
-      this.categories = data.categories;
+    let data = await fetchData(
+      "https://www.themealdb.com/api/json/v1/1/categories.php"
+    );
+    this.categories = data.categories;
   },
   methods: {
     async getCategoryId(value) {
-      
-      let data = await fetchData("https://www.themealdb.com/api/json/v1/1/filter.php?c=" + value.name);
+      let data = await fetchData(
+        "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + value.name
+      );
       this.selectedMeals = data;
       this.activeCategory = value.name;
     },
 
     async getMealId(value) {
-      
-      let data = await fetchData("https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + value);
-      this.choosenMeal=data.meals[0];
-      console.log(this.choosenMeal)
+      let data = await fetchData(
+        "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + value
+      );
+      this.choosenMeal = data.meals[0];
+      let ingredients = [];
+      let measures = [];
+      for (const [key, value] of Object.entries(this.choosenMeal)) {
+        if (
+          value !== "" &&
+          value != " " &&
+          value != null &&
+          key.includes("Ingredient")
+        ) {
+          ingredients.push(value);
+        }
+        if (value !== "" && value != " " && key.includes("Measure")) {
+          measures.push(value);
+        }
+      }
+
+      let all = [];
+      ingredients.forEach((element, index) => {
+        let obj = { name: element, measure: measures[index] };
+        all.push(obj);
+      });
+      this.choosenMeal = { meal : data.meals[0] , ingredients : all}
+     
     },
   },
 };
@@ -61,23 +87,23 @@ export default {
     </div>
   </div>
 
-<div class="meal-container">
-  <div>
-    <template v-for="meal in selectedMeals.meals">
-      <div class="meal">
-        <Meal
-          :meal="meal.strMeal"
-          :src="meal.strMealThumb"
-          :id="meal.idMeal"
-          @sendId="getMealId"
-        ></Meal>
-      </div>
-    </template>
+  <div class="meal-container">
+    <div>
+      <template v-for="meal in selectedMeals.meals">
+        <div class="meal">
+          <Meal
+            :meal="meal.strMeal"
+            :src="meal.strMealThumb"
+            :id="meal.idMeal"
+            @sendId="getMealId"
+          ></Meal>
+        </div>
+      </template>
+    </div>
+    <div class="selected-meal" v-if="this.choosenMeal">
+      <Choosenmeal :meal="this.choosenMeal"></Choosenmeal>
+    </div>
   </div>
-  <div class="selected-meal">
-        <Choosenmeal :meal="this.choosenMeal" ></Choosenmeal>
-  </div>
-</div>  
 </template>
 
 <style>

@@ -120,13 +120,17 @@ h3 {
   gap: 1rem;
 }
 .selected-meal .meal-pic {
+
+  margin-top: 6rem;
   display: flex;
-  margin: auto;
   flex-direction: column;
+  height: fit-content;
+  justify-content: center;
   gap: 0.5rem;
   padding: 2rem;
 }
 .selected-meal img {
+ 
   margin: auto;
 }
 .selected-meal .meal .meal-infos {
@@ -144,13 +148,41 @@ h3 {
 .meal-name{
   font-size: 1.5rem;
   padding-top: 1rem;
-  padding-left: 1rem;
+
+}
+.meal-ingredients{
+  margin-bottom: 2rem;
 }
 .meal-ins{
-  padding-left: 1rem;
+ 
   padding-bottom: 1rem;
   line-height: 1.75;
+  width: 80%;
+  margin-top: 3rem;
 }
+.selected-meal .youtube,.selected-meal .favorite{
+  border-radius: 0;
+  width: 50px;
+  height:50px;
+  object-fit: cover;
+  margin: auto;
+  display: block;
+  
+}
+.meal-infos{
+  padding-left: 1rem;
+}
+.meal-all-ins{
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 2rem;
+}
+.meal-all-ins li{
+ 
+  margin-right: 3rem;
+  text-align: left;
+}
+.icons .favorite{height: 35px;}
 @media (max-width: 720px) {
   .categories-title {
     flex-direction: column;
