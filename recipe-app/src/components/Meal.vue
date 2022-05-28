@@ -1,6 +1,6 @@
 <template>
   <div class="meal-title">
-    <div>{{ meal }}</div>
+    <div  ref="container">{{ meal }}</div>
     <div><button @click="getMealId">Click here</button></div>
   </div>
   <div><img :src="src" /></div>
@@ -14,7 +14,9 @@ export default {
   methods: {
       getMealId(){
         this.$emit("sendId",this.id);
-      }
+       
+      },
+      
   },
   
 };

@@ -15,14 +15,17 @@
       </div>
     </div>
     <div class="meal-infos">
+    <div class="meal-title-favorite">
       <div class="meal-name">{{ this.meal.meal.strMeal }}</div>
+      
+    </div>  
       <div class="meal-all-ins">
       <div class="meal-ins">{{ this.meal.meal.strInstructions }}</div>
 
       <div>
       <div class="meal-ingredients">{{ "Ingredients:" }}</div>
-        <ul v-for="item in this.meal.ingredients">
-          <li>{{ item.name + " " + item.measure }}</li>
+        <ul>
+          <li  v-for="item in this.meal.ingredients">{{ item.name + " " + item.measure }}</li>
         </ul>
       </div>
       </div>
@@ -33,6 +36,10 @@
 <script>
 export default {
   props: ["meal"],
-  
+  data(){
+    return{
+      isFavorite:false
+    }
+  }
 };
 </script>
