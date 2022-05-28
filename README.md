@@ -1,2 +1,2 @@
 # recipe!
-![alt text](https://github.com/jooedvard/recipe/recipe.png?raw=true)
+![alt text](https://github.com/jooedvard/recipe/blob/master/recipe.PNG?raw=true)
