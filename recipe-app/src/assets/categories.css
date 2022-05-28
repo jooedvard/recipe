@@ -55,9 +55,19 @@ h3 {
   color: rgb(228, 148, 0);
   font-size: 1.1rem;
 }
-.meal-container {
+.meal .header
+{
+
   display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: center;
 }
+.meal .header li{
+  list-style-type: none;
+  padding: .25rem;
+}
+
 .meal {
   font-family: "Inter", sans-serif;
   font-weight: 500;
@@ -135,6 +145,7 @@ h3 {
   flex-direction: column;
   gap: 2rem;
   text-align: justify;
+  align-items: center;
 }
 .meal-area {
   color: blue;
@@ -148,6 +159,8 @@ h3 {
 }
 .meal-ingredients {
   margin-bottom: 2rem;
+  padding-left: 2.3rem;
+  font-weight: 700;
 }
 .meal-ins {
   padding-bottom: 1rem;
@@ -175,6 +188,7 @@ h3 {
 .meal-all-ins li {
   margin-right: 3rem;
   text-align: left;
+
 }
 .icons .favorite {
   height: 35px;
@@ -196,49 +210,41 @@ h3 {
   padding-top: 1rem;
  
 }
+.all-meal{
+  display: inline-flex;
+  flex-direction: row;
+  
+ 
+  overflow-x: scroll;
+ width: 100%;
+  background-color: white;
+  border-radius: 25px;
 
-@media (max-width: 1110px) {
-  .all-meal{
-    display: inline-flex;
-    flex-direction: row;
-    
-   
-    overflow-x: scroll;
-    box-sizing: content-box;
-    padding-bottom: 17px;
-    background-color: white;
-    border-radius: 25px;
-
-  }
-  .meal-container{
-    flex-direction: column;
-    overflow-x: hidden;
-    width: 100%;
-    
-    margin: auto;
-    
-  }
-  .selected-meal .meal{
-    display: grid;
-    margin: 0;
-    margin-top: 1rem;
-  }
-  .selected-meal .meal img{
-    width: 50%;
-  }
-  .selected-meal a img{
-    width: 40px!important;
-  }
-  .selected-meal .meal-all-ins{
-    display: grid;
-    align-items: center;
-  }
-  .selected-meal .meal-all-ins > *{
-    margin: auto;
-  }
-  .meal-name{
-    
-  }
+}
+.meal-container{
+  flex-direction: column;
+  overflow-x: hidden;
+  width: 100%;
+  margin: auto;
+  
+}
+.selected-meal .meal{
+  display: grid;
+  margin: 0;
+  margin-top: 1rem;
+}
+.selected-meal .meal img{
+  width: 150px;
+}
+.selected-meal a img{
+  width: 40px!important;
+}
+.selected-meal .meal-all-ins{
+  display: grid;
+  align-items: center;
+}
+.selected-meal .meal-all-ins > *{
+  margin: auto;
 }
 
 
